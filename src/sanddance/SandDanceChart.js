@@ -16,24 +16,24 @@ const chartList = ['barchart', 'density', 'grid', 'scatterplot', 'stacks']
 const viewerOptions = {
   language:{
       headers: {
-          chart: 'Grafik',
-          details: 'Detaylar',
+          chart: 'Chart',
+          details: 'Details',
           legend: 'Legend',
-          selection: 'Seç && Filterele'
+          selection: 'Selection and filter'
       },
       bing: 'bing',
       newColorMap: 'remap color to filtered items',
-      oldColorMap: 'Aynı Renkleri Tut',
+      oldColorMap: 'old color map',
       deselect: 'deselect',
-      exclude: 'çıkar',
-      isolate: 'isole',
-      legendOther: 'diğer',
+      exclude: 'exclude',
+      isolate: 'isolate',
+      legendOther: 'legendOther',
       nextDetail: '>',
       previousDetail: '<',
       reset: 'reset',
       colorBinCount: 'Color bin count',
       colorReverse: 'Color reverse',
-      count: 'Sayi',
+      count: 'Count',
       scatterPointSize: 'Point size',
       XBinSize: 'X axis bin size',
       YBinSize: 'Y axis bin size',
@@ -70,8 +70,8 @@ class SandDanceChart extends React.Component {
                 },
                 scheme: 'redblue',
                 size: {
-                    height: 1000,
-                    width: 1000
+                    height: 300,
+                    width: 500
                 },
                 chart: "barchart",
                 view: "2d",
@@ -82,7 +82,7 @@ class SandDanceChart extends React.Component {
             columns: [],
         };
 
-        d3.csv('iller_csv_p.csv', (error, csvData) => {
+        d3.csv('Panviz.csv', (error, csvData) => {
             if (error) throw error;
             this.setState({csvData, columns: Object.keys(csvData[0])})
         })
@@ -148,10 +148,11 @@ class SandDanceChart extends React.Component {
         }
         return (
             <div>
+                <img src="https://miro.medium.com/max/700/1*yqhZgTfjJAUw9KqLtmkC_A.jpeg" alt="Panvala logo"  style={{width:200}}></img> 
 
-                <div className="sanddance-left-input-menu">
+                <div className="sanddance-left-input-menu ">
                     <div>
-                        <div className="text-center"><span className="font-weight-bold">Grafikler</span></div>
+                        <div className="text-center"><span className="font-weight-bold"> Graph </span></div>
                         <div>
                             <select className="form-control" id="sanddance-chart-list" onClick={this.onClickChartList}>
                                 {chartList.map((item, index) => <option key={`chartList-${index}`}
@@ -161,16 +162,16 @@ class SandDanceChart extends React.Component {
 
                     </div>
                     <div className="mt-2">
-                        <div className="text-center"><span className="font-weight-bold">Boyut</span></div>
+                        <div className="text-center"><span className="font-weight-bold">Dimension</span></div>
                         <select className="form-control" id="sanddance-chart-list"
                                 onClick={this.onClickDimenisonRadioBtn}>
-                            <option key="option-2d" value="2d">2 Boyuylu</option>
-                            <option key="option-3d" value="3d">3 Boyutlu</option>
+                            <option key="option-2d" value="2d">2 Dimension</option>
+                            <option key="option-3d" value="3d">3 Dimension</option>
                         </select>
                     </div>
 
                     <div className="mt-2">
-                        <div className="text-center"><span className="font-weight-bold">X ekseni</span></div>
+                        <div className="text-center"><span className="font-weight-bold">X Axis</span></div>
                         <div>
                             <select className="form-control" id="sanddance-x-list" onClick={this.onClickXAxis}>
                                 {this.state.columns.map((item, index) => <option key={`x-${index}`}
@@ -179,7 +180,7 @@ class SandDanceChart extends React.Component {
                         </div>
                     </div>
                     <div className="mt-2">
-                        <div className="text-center"><span className="font-weight-bold">Y ekseni</span></div>
+                        <div className="text-center"><span className="font-weight-bold">Y Axis</span></div>
                         <div>
                             <select className="form-control" id="sanddance-y-list" onClick={this.onClickYAxis}>
                                 {this.state.columns.map((item, index) => <option key={`y-${index}`}
@@ -188,7 +189,7 @@ class SandDanceChart extends React.Component {
                         </div>
                     </div>
                     <div className="mt-2">
-                        <div className="text-center"><span className="font-weight-bold">Z ekseni</span></div>
+                        <div className="text-center"><span className="font-weight-bold">Z Axis</span></div>
                         <div>
                             <select className="form-control" id="sanddance-z-list" onClick={this.onClickZAxis}>
                                 {this.state.columns.map((item, index) => <option key={`z-${index}`}
@@ -197,7 +198,7 @@ class SandDanceChart extends React.Component {
                         </div>
                     </div>
                     <div className="mt-2">
-                        <div className="text-center"><span className="font-weight-bold">Renk</span></div>
+                        <div className="text-center"><span className="font-weight-bold"> Color </span></div>
                         <div>
                             <select className="form-control" id="sanddance-color-list" onClick={this.onClickColor}>
                                 {this.state.columns.map((item, index) => <option key={`color-${index}`}
@@ -205,8 +206,9 @@ class SandDanceChart extends React.Component {
                             </select>
                         </div>
                     </div>
-                    {this.state.test}
-                    {test}
+                    {/* {this.state.test} */}
+                    {/* {test} */}
+
 
                 </div>
                 <div>

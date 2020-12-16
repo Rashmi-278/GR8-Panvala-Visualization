@@ -16,9 +16,11 @@
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
+.pan {
+
+}
 .App-link {
   color: #61dafb;
 }
@@ -50,4 +52,5 @@
   top: 30px !important;
   left: 10px !important;
   z-index: 1 !important;
+  margin-top: 50px;
 }
